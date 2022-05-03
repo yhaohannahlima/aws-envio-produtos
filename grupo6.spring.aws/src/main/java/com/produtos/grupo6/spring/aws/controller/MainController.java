@@ -1,5 +1,7 @@
 package com.produtos.grupo6.spring.aws.controller;
 
+import java.net.URI;
+
 import com.produtos.grupo6.spring.aws.util.S3Util;
 
 import org.springframework.stereotype.Controller;
@@ -28,8 +30,8 @@ public class MainController {
         String message = "";
 
         try {
-            S3Util.uploadFile(fileName, multipart.getInputStream());
-            message = "Your file has been uploaded successfully!";
+            URI res = S3Util.uploadFile(fileName, multipart.getInputStream());
+            message = res.toString();
         } catch (Exception ex) {
             message = "Error uploading file: " + ex.getMessage();
         }
