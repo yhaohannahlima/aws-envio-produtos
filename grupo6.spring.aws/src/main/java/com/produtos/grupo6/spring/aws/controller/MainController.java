@@ -2,6 +2,7 @@ package com.produtos.grupo6.spring.aws.controller;
 
 import java.net.URI;
 
+import com.produtos.grupo6.spring.aws.util.KafkaUtil;
 import com.produtos.grupo6.spring.aws.util.S3Util;
 
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,7 @@ public class MainController {
         try {
             URI res = S3Util.uploadFile(fileName, multipart.getInputStream());
             message = res.toString();
+            KafkaUtil.sendMessage(fileName, message);
         } catch (Exception ex) {
             message = "Error uploading file: " + ex.getMessage();
         }
