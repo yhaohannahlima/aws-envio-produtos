@@ -13,13 +13,13 @@ public class KafkaUtil {
 	
 	public static void sendMessage(String key,String value) throws 
 	InterruptedException, ExecutionException{
+		System.out.println("Dando erro zuado que tá me ferrado em plena sexta feira");
 		
 		KafkaProducer<String, String> producer = new KafkaProducer<String,String>(properties());
 		
-		ProducerRecord <String, String> record = new ProducerRecord<String,String>
-		(System.getenv("KAFKA_TOPIC"),key, value);
+		ProducerRecord <String, String> record = new ProducerRecord<String,String>(System.getenv("KAFKA_TOPIC"),key, value);
 		
-		Callback callback = (data, ex) -> {
+		Callback callback =(data, ex) -> {
 			
 			if(ex != null) {
 				ex.printStackTrace();

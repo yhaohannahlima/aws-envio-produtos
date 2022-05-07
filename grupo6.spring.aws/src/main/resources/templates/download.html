@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Spring Boot File Upload to S3</title>
+</head>
+
+<body>
+    <div align="center">
+        <div>
+            <h3>Lista de Produtos:</h3>
+        </div>
+        <div>
+        <table>
+		    <thead>
+		        <tr>
+		            <th> ID </th>
+		            <th> Nome </th>
+		            <th> Descrição </th>
+		            <th> Quantidade </th>
+		            <th> Data de Cadastro </th>
+		            
+		        </tr>
+		    </thead>
+    <tbody>
+	<tr th:if="${produtos.empty}">
+            <td colspan="4"> Não Existem Produtos Cadastrados!! </td>
+        </tr>
+        <tr th:each="produtos : ${produtos}">
+            <td><span th:text="${produtos.id}"> ID </span></td>
+            <td><span th:text="${produtos.nome}"> Nome </span></td>
+            <td><span th:text="${produtos.descricao}"> Descrição </span></td>
+            <td><span th:text="${produtos.quantidade}"> Quantidade </span></td>
+            <td><span th:text="${produtos.dataCadastro}"> Data de Cadastro </span></td>
+        </tr>
+    </tbody>
+</table>	
+    </div>
+</body>
+
+</html>
