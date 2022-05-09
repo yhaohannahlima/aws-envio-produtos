@@ -2,41 +2,82 @@
 <html>
 
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Spring Boot File Upload to S3</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/templates/index.css" />
+<title>Spring Boot File Upload to S3</title>
 </head>
+<style>
+body {
+	margin: 0;
+	background: linear-gradient(45deg, #49a09d, #5f2c82);
+	font-family: sans-serif;
+	font-weight: 100;
+	
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+table {
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	text-align: center;
+	
+}
+.thead {
+	
+		background-color:  #55608f;
+	}
+
+
+
+</style>
 
 <body>
-    <div align="center">
-        <div>
-            <h3>Lista de Produtos:</h3>
-        </div>
-        <div>
-        <table>
-		    <thead>
-		        <tr>
-		            <th> ID </th>
-		            <th> Nome </th>
-		            <th> Descrição </th>
-		            <th> Quantidade </th>
-		            <th> Data de Cadastro </th>
-		            
-		        </tr>
-		    </thead>
-    <tbody>
-	<tr th:if="${produtos.empty}">
-            <td colspan="4"> Não Existem Produtos Cadastrados!! </td>
-        </tr>
-        <tr th:each="produtos : ${produtos}">
-            <td><span th:text="${produtos.id}"> ID </span></td>
-            <td><span th:text="${produtos.nome}"> Nome </span></td>
-            <td><span th:text="${produtos.descricao}"> Descrição </span></td>
-            <td><span th:text="${produtos.quantidade}"> Quantidade </span></td>
-            <td><span th:text="${produtos.dataCadastro}"> Data de Cadastro </span></td>
-        </tr>
-    </tbody>
-</table>	
-    </div>
+	<div class="container">
+		<div>
+			<h3>Lista de Produtos:</h3>
+		</div>
+		<div>
+			<table>
+				<thead class="thead">
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Descrição</th>
+						<th>Quantidade</th>
+						<th>Data de Cadastro</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${produtos.empty}">
+						<td colspan="4">NÃ£o Existem Produtos Cadastrados!!</td>
+					</tr>
+					<tr th:each="produtos : ${produtos}">
+						<td><span th:text="${produtos.id}"> ID </span></td>
+						<td><span th:text="${produtos.nome}"> Nome </span></td>
+						<td><span th:text="${produtos.descricao}"> Descrição </span></td>
+						<td><span th:text="${produtos.quantidade}"> Quantidade
+						</span></td>
+						<td><span th:text="${produtos.dataCadastro}"> Data de
+								Cadastro </span></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+	</div>
 </body>
 
 </html>

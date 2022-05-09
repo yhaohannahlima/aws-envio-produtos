@@ -6,8 +6,14 @@
 	
 }
 
-div {
+
+body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: green;
 }
+.content {
+	display:flex; 
+	margin: auto;
+	}
