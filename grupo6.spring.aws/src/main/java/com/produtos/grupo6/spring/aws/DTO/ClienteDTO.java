@@ -1,6 +1,6 @@
 package com.produtos.grupo6.spring.aws.DTO;
 
-public class CadastroClienteDTO {
+public class ClienteDTO {
     private Integer clienteId;
     private String nome;
     private String email;
