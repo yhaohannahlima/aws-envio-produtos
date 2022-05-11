@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cliente_id")
