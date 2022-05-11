@@ -86,7 +86,7 @@ public class MainController {
     @GetMapping("/pedidos")
     public String buscarDadosPedidos(ModelMap model){    	
     	List<Pedidos> pedidos = (List<Pedidos>)pedidosDAO.findAll();    	
-    	model.addAttribute("clientes",pedidos);    	
+    	model.addAttribute("pedidos",pedidos);    	
     	for( Pedidos p : pedidos) {    		
     		System.out.println(p.toString());
     	}    
