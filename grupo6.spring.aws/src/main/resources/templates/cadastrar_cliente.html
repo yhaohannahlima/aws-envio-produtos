@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -10,6 +10,7 @@
 	media="screen,projection" />
 <link type="text/css" rel="stylesheet" href="/css/materialize.css"
 	media="screen,projection" />
+	
 <title>Cadastro de Clientes</title>
 </head>
 <body>
@@ -25,19 +26,19 @@
 				  
 			    </div>
 			</nav>
-			<!-- <form th:action="@{/clientes/salvar}" th:object="${cliente}" method="post">
+		<form th:action="@{/salvar}" th:object="${cliente}" method="POST">
 				<div class="mg-top">
-				<label for="nome">Nome do Cliente:</label>
-				<input type="text" id="nome" th:field="*{nome}" placeholder="Nome"/>
-				<label for="email">E-mail do Cliente:</label>
-				<input type="text"  id="email" th:field="*{email}" placeholder="E-mail"/>
-				<label for="dataDeNascimento">Data de Nascimento:</label>
-				<input type="date"  id="dataDeNascimento" th:field="*{dataNascimento}" placeholder="Data de Nascimento"/>				
+				<label th:for="nome">Nome do Cliente:</label>
+				<input type="text"th:field="*{nome}" id="nome" placeholder="Nome" />
+				 <label th:for="email">E-mail do Cliente:</label>
+				<input type="text" th:field="*{email}" id="email"  placeholder="E-mail" />
+				<label th:for="dataDeNascimento">Data de Nascimento:</label>
+				<input type="date" th:field="*{dataNascimento}" id="dataDeNascimento"  placeholder="Data de Nascimento" />	 	
 				</div>
 				<button class="btn waves-effect waves-light" type="submit" value="salvar_cliente">
 					Salvar Cliente	   		
 		 		</button>
-			</form> -->
+			</form> 
 			
 			<a  class="mg-top" href="/listar_clientes">
 		             <button class="btn waves-effect waves-light" type="submit" name="action">

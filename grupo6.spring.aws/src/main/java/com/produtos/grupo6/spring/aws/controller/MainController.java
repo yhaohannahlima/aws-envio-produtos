@@ -76,9 +76,10 @@ public class MainController {
 	   
 	   return "cadastro";
    }
+
    @GetMapping("/cadastrar_cliente")
    public String CadastroCliente(ModelMap model) {
-	   
+	   model.addAttribute("cliente", new Clientes());
 	   return "cadastrar_cliente";
    }
 
@@ -107,10 +108,11 @@ public class MainController {
         return "pedidos";
     }
 
-    @PostMapping("/clientes/salvar")
-    public String salvarDadosClientes(@ModelAttribute("clientes") Clientes cliente, RedirectAttributes attr){
-        clientesDAO.save(cliente);  
+    @PostMapping("/salvar")
+    public String salvar(@ModelAttribute Clientes cliente ,RedirectAttributes attr){
+    	System.out.println(cliente);
+    	       clientesDAO.save(cliente);  
         attr.addFlashAttribute("Sucess","Cliente salvo com sucesso.");      
-        return "redirect:/cadastrar_cliente";
+        return "cadastro";
     }
 }
