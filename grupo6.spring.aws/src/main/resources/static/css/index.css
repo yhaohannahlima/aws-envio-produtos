@@ -8,6 +8,7 @@
 
 
 body {
+	
 	display: flex;
 	flex-direction:column;
 	align-items: center;
@@ -31,4 +32,17 @@ body {
 	justify-content: center;
 	margin-top:50px;
 	
-	} 
+} 
+
+.align-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.gap {
+	gap:10px;
+}
+
+.mg-top {
+	margin-top: 40px;
+}
