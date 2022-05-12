@@ -15,7 +15,7 @@ public class Pedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pedido_id")
-    private Integer pedidoId;
+    private Integer id;
 
     @Column(name = "cliente_id")
     private Integer clienteId;
@@ -26,12 +26,12 @@ public class Pedidos {
     @Column(name = "data_pedido", nullable = false)
     private Date dataPedido;
 
-	public Integer getPedidoId() {
-		return pedidoId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setPedidoId(Integer pedidoId) {
-		this.pedidoId = pedidoId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getClienteId() {
@@ -60,8 +60,10 @@ public class Pedidos {
 
 	@Override
 	public String toString() {
-		return "Pedidos [pedidoId=" + pedidoId + ", clienteId=" + clienteId + ", quantidadeTotal=" + quantidadeTotal
-				+ ", dataPedido=" + dataPedido + "]";
+		return "Pedidos [clienteId = " + clienteId + ", dataPedido = " + dataPedido + ", id = " + id + ", quantidadeTotal = "
+				+ quantidadeTotal + "]";
 	}
+
+	
 
 }
