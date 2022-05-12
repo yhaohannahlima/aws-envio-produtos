@@ -3,15 +3,17 @@
 
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="/css/index.css" media="screen,projection" />
-<link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/css/index.css"
+	media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"
+	media="screen,projection" />
 <link type="text/css" rel="stylesheet" href="/css/materialize.css"
 	media="screen,projection" />
 
 <title>Spring Boot File Upload to S3</title>
 </head>
-
 
 <body>
 	<div class="container">
@@ -20,7 +22,7 @@
 		</div>
 		<div>
 			<table class="highlight">
-				<thead >
+				<thead>
 					<tr>
 						<th>ID</th>
 						<th>Nome</th>
@@ -33,6 +35,7 @@
 				<tbody>
 					<tr th:if="${produtos.empty}">
 						<td colspan="4">NÃ£o Existem Produtos Cadastrados!!</td>
+
 					</tr>
 					<tr th:each="produtos : ${produtos}">
 						<td><span th:text="${produtos.id}"> ID </span></td>
@@ -43,12 +46,33 @@
 						<td><span th:text="${produtos.dataCadastro}"> Data de
 								Cadastro </span></td>
 					</tr>
+					<tr>
+						<td colspan="4">Não Existem Clientes Cadastrados!!</td>
+					</tr>
+					<tr>
+						<td colspan="4">Deseja buscar os dados em qual base de dados?</td>
+
+						<td>
+							<form action="#">
+								<p>
+									<label> <input name="group1" type="radio" checked /> <span>Elastic Search</span>
+									</label>
+								</p>
+								<p>
+									<label> <input name="group1" type="radio" /> <span>Base de Dados Postgres</span>
+									</label>
+								</p>
+								
+								
+							</form>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	 <script type="text/javascript" src="/js/materialize.min.js"></script>
-    <script type="text/javascript" src="/js/materialize.js"></script>
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/js/materialize.js"></script>
 </body>
 
 </html>

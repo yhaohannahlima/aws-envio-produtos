@@ -70,16 +70,27 @@ public class MainController {
     	}    
     	return "download";    	
     }
+   
+   @GetMapping("/cadastro")
+   public String Cadastro(ModelMap model) {
+	   
+	   return "cadastro";
+   }
+   @GetMapping("/cadastrar_cliente")
+   public String CadastroCliente(ModelMap model) {
+	   
+	   return "cadastrar_cliente";
+   }
 
 
-    @GetMapping("/clientes")
+    @GetMapping("/listar_clientes")
     public String buscarDadosClientes(ModelMap model){    	
     	List<Clientes> clientes = (List<Clientes>)clientesDAO.findAll();    	
     	model.addAttribute("clientes",clientes);    	
     	for( Clientes c : clientes) {    		
     		System.out.println(c.toString());
     	}    
-    	return "clientes";    	
+    	return "listar_clientes";    	
     }
 
 
