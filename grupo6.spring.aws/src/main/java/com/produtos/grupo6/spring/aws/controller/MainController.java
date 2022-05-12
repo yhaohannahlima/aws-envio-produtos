@@ -22,13 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class MainController {	
-	
-	@Autowired
-	private ProdutosDAO produtosDAO;
-    private ClientesDAO clientesDAO;
-    private PedidosDAO pedidosDAO;
+public class MainController {
 
+    @Autowired
+    private ProdutosDAO produtosDAO;
+    @Autowired
+    private ClientesDAO clientesDAO;
+    @Autowired
+    private PedidosDAO pedidosDAO;
 
     @GetMapping("/")
     public String viewHomePage() {
@@ -38,7 +39,7 @@ public class MainController {
     @PostMapping("/upload")
     public String handleUploadForm(Model model, String description,
             @RequestParam("file") MultipartFile multipart) {
-        
+
         String fileName = multipart.getOriginalFilename();
         System.out.println("Description: " + description);
         System.out.println("filename: " + fileName);
@@ -49,8 +50,8 @@ public class MainController {
             URI res = S3Util.uploadFile(fileName, multipart.getInputStream());
             System.out.println(res);
             message = res.toString();
-            System.out.println("estou enviando uma mensagem : "+message);
-           
+            System.out.println("estou enviando uma mensagem : " + message);
+
             KafkaUtil.sendMessage(fileName, message);
         } catch (Exception ex) {
             message = "Error uploading file: " + ex.getMessage();
@@ -58,17 +59,13 @@ public class MainController {
         model.addAttribute("message", message);
         return "message";
     }
-    
-    
-   @GetMapping("/download")
-    public String buscarDadosProdutos(ModelMap model){
-    	System.out.println("entrar");
-    	List<Produtos> produtos = (List<Produtos>)produtosDAO.findAll();    	
-    	model.addAttribute("produtos",produtos);    	
-    	for( Produtos p : produtos) {    		
-    		System.out.println(p.toString());
-    	}    
-    	return "download";    	
+
+  
+    @GetMapping("/download")
+    public String buscarDados(ModelMap model) {
+        List<Produtos> produtos = (List<Produtos>) produtosDAO.findAll();
+        model.addAttribute("produtos", produtos);
+        return "download";
     }
    
    @GetMapping("/cadastro")
@@ -82,6 +79,12 @@ public class MainController {
 	   return "cadastrar_cliente";
    }
 
+    @GetMapping("/produtos")
+    public String buscarDadosProdutos(ModelMap model) {
+        List<Produtos> produtos = (List<Produtos>) produtosDAO.findAll();
+        model.addAttribute("produtos", produtos);
+        return "produtos";
+    }
 
     @GetMapping("/listar_clientes")
     public String buscarDadosClientes(ModelMap model){    	
@@ -93,15 +96,11 @@ public class MainController {
     	return "listar_clientes";    	
     }
 
-
     @GetMapping("/pedidos")
-    public String buscarDadosPedidos(ModelMap model){    	
-    	List<Pedidos> pedidos = (List<Pedidos>)pedidosDAO.findAll();    	
-    	model.addAttribute("pedidos",pedidos);    	
-    	for( Pedidos p : pedidos) {    		
-    		System.out.println(p.toString());
-    	}    
-    	return "pedidos";    	
+    public String buscarDadosPedidos(ModelMap model) {
+        List<Pedidos> pedidos = (List<Pedidos>) pedidosDAO.findAll();
+        model.addAttribute("pedidos", pedidos);
+        return "pedidos";
     }
-    
+
 }
