@@ -92,9 +92,13 @@ public class MainController {
     }
 
     @GetMapping("/listar_clientes")
-    public String buscarDadosClientes(ModelMap model){    	
-    	List<Clientes> clientes = (List<Clientes>)clientesDAO.findAll();    	
-    	model.addAttribute("clientes",clientes);    	
+    public String buscarDadosClientes(ModelMap model){ 
+    	if(redis.isempty) {
+    		
+    		List<Clientes> clientes = (List<Clientes>)clientesDAO.findAll();   
+    		redisset()
+    		model.addAttribute("clientes",clientes);    	
+    	}
     	for( Clientes c : clientes) {    		
     		System.out.println(c.toString());
     	}    

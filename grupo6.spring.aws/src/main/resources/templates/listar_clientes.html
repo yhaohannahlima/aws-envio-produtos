@@ -39,17 +39,11 @@
 				<tbody>
 					<tr th:if="${clientes.empty}">
 						<td colspan="4">Não Existem Clientes Cadastrados!!</td>
-						<td colspan="4"> Deseja buscar os dados em qual base de dados?</td>
-						<td> 
-							<div>
-								<input type="radio" checked="checked">
-								<input type="radio" checked="checked">
-							</div>
-						</td>
 					</tr>
 					<tr th:each="clientes : ${clientes}">
+
 						<td><span th:text="${clientes.nome}"> Nome </span></td>
-						<td><span th:text="$clientes.descricao}"> E-Mail </span></td>
+						<td><span th:text="${clientes.email}"> Email </span></td>					
 						<td><span th:text="${clientes.dataNascimento}"> Data de
 								Nascimento </span></td>
 					</tr>
@@ -59,8 +53,8 @@
 			</div>
 			
 			
-			<a  class="mg-top" href="/listar_clientes">
-		             <button class="btn waves-effect waves-light" type="submit" name="action">Voltar</button>
+			<a  class="mg-top" href="/cadastro">
+		             <button class="btn waves-effect waves-light">Voltar</button>
 				</a>
 	</div>
 
