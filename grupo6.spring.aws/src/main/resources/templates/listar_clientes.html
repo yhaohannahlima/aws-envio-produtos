@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Lista de  Cliente</title>
@@ -14,12 +14,12 @@
 </head>
 <body>
 <div class="container">
-		<h3 class= "align-text">Cadastrar Clientes</h3>
+		<h3 class= "align-text">Listar Clientes</h3>
 		
 			<nav class= "align-text">
 				<div class="nav-wrapper">
 				    <a href="/"><button  class="waves-effect waves-light btn-small">Inicio</button ></a> 
-					<a href="/clientes/cadastrar" ><button class="waves-effect waves-light btn-small">Cadastrar de Clientes</button></a> 
+					<a href="/cadastrar_cliente" ><button class="waves-effect waves-light btn-small">Cadastrar de Clientes</button></a> 
 					<a href="/produtos/cadastrar" ><button	class="waves-effect waves-light btn-small">Cadastrar de Produtos</button></a> 
 					<a href="/vendas/cadastrar" ><button class="waves-effect waves-light btn-small" >Cadastrar Pedidos</button></a>
 				   
@@ -37,24 +37,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:if="${clienteRedis.empty}">
+					<tr th:if="${clientes.empty}">
 						<td colspan="4">Não Existem Clientes Cadastrados!!</td>
-						<td colspan="4"> Deseja buscar os dados em qual base de dados?</td>
-						<td> 
-							<div>
-								<input type="radio" checked="checked">
-								<input type="radio" checked="checked">
-							</div>
-						</td>
 					</tr>
-					<tr th:each="clientes : ${produtos}">
-						<td><span th:text="${produtos.id}"> ID </span></td>
-						<td><span th:text="${produtos.nome}"> Nome </span></td>
-						<td><span th:text="${produtos.descricao}"> Descrição </span></td>
-						<td><span th:text="${produtos.quantidade}"> Quantidade
-						</span></td>
-						<td><span th:text="${produtos.dataCadastro}"> Data de
-								Cadastro </span></td>
+					<tr th:each="clientes : ${clientes}">
+
+						<td><span th:text="${clientes.nome}"> Nome </span></td>
+						<td><span th:text="${clientes.email}"> Email </span></td>					
+						<td><span th:text="${clientes.dataNascimento}"> Data de
+								Nascimento </span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -62,8 +53,8 @@
 			</div>
 			
 			
-			<a  class="mg-top" href="/listar_clientes">
-		             <button class="btn waves-effect waves-light" type="submit" name="action">Voltar</button>
+			<a  class="mg-top" href="/cadastro">
+		             <button class="btn waves-effect waves-light">Voltar</button>
 				</a>
 	</div>
 
