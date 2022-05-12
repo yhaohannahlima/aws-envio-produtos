@@ -1,5 +1,6 @@
 package com.produtos.grupo6.spring.aws.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.net.URI;
 import java.util.List;
 
@@ -17,9 +18,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class MainController {
@@ -79,6 +82,7 @@ public class MainController {
 	   return "cadastrar_cliente";
    }
 
+   
     @GetMapping("/produtos")
     public String buscarDadosProdutos(ModelMap model) {
         List<Produtos> produtos = (List<Produtos>) produtosDAO.findAll();
@@ -103,4 +107,10 @@ public class MainController {
         return "pedidos";
     }
 
+    @PostMapping("/clientes/salvar")
+    public String salvarDadosClientes(@ModelAttribute("clientes") Clientes cliente, RedirectAttributes attr){
+        clientesDAO.save(cliente);  
+        attr.addFlashAttribute("Sucess","Cliente salvo com sucesso.");      
+        return "redirect:/cadastrar_cliente";
+    }
 }
