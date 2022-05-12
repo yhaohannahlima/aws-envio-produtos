@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="/css/index.css" media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="/css/materialize.css" media="screen,projection" />
+
+	<title>Spring Boot File Upload to S3</title>
+</head>
+
+
+<body>
+	<div class="container">
+		<div>
+			<h3>Lista de Pedidos:</h3>
+		</div>
+		<div>
+			<table class="highlight">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Cliente Id</th>
+						<th>Quantidade Total</th>
+						<th>Data Pedido</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${pedidos.empty}">
+						<td colspan="4">Não Existem Clientes Cadastrados!!</td>
+					</tr>
+					<tr th:each="pedidos : ${pedidos}">
+						<td><span th:text="${pedidos.id}"> ID </span></td>
+						<td><span th:text="${pedidos.clienteId}"> Cliente Id </span></td>
+						<td><span th:text="${pedidos.quantidadeTotal}"> Quantidade Total </span></td>
+						<td><span th:text="${pedidos.dataPedido}"> Data Pedido </span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/js/materialize.js"></script>
+</body>
+
+</html>

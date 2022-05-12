@@ -1,6 +1,7 @@
 package com.produtos.grupo6.spring.aws.model;
 
-import java.util.Date;
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,60 +10,57 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cliente")
+@Table(name="clientes")
 public class Clientes {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cliente_id")
-    private Integer clienteId;
+    @Column(name="cliente_id")
+    private Integer id;
 
-    @Column(name = "nome", nullable = false, length =100)
+    @Column(name="nome", length = 100, nullable = false )
     private String nome;
 
-    @Column(name = "email", nullable = false, length =200, unique = true)
+    @Column(name="email", length = 200, nullable = false )
     private String email;
-    
-    @Column(name = "data_nascimento", nullable = false)
+
+    @Column(name="data_nascimento", nullable = false )
     private Date dataNascimento;
 
-	public Integer getClienteId() {
-		return clienteId;
-	}
 
-	public void setClienteId(Integer clienteId) {
-		this.clienteId = clienteId;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
 
-	@Override
-	public String toString() {
-		return "Cliente [clienteId=" + clienteId + ", nome=" + nome + ", email=" + email + ", dataNascimento="
-				+ dataNascimento + "]";
-	}
-    
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     
 
+    
 }
