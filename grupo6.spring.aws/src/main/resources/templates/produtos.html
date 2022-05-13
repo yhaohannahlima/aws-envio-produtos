@@ -1,53 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="/css/index.css" media="screen,projection" />
-<link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
-<link type="text/css" rel="stylesheet" href="/css/materialize.css"
-	media="screen,projection" />
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/css/index.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/css/materialize.css" media="screen,projection" />
 
-<title>Spring Boot File Upload to S3</title>
+    <title>Spring Boot File Upload to S3</title>
 </head>
 
 
 <body>
-	<div class="container">
-		<div>
-			<h3>Lista de Produtos:</h3>
-		</div>
-		<div>
-			<table class="highlight">
-				<thead >
-					<tr>
-						<th>ID</th>
-						<th>Nome</th>
-						<th>Descrição</th>
-						<th>Quantidade</th>
-						<th>Data de Cadastro</th>
+    <div class="container">
+        <div>
+            <h3>Lista de Produtos:</h3>
+        </div>
+        <div>
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Data de Cadastro</th>
 
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:if="${produtos.empty}">
-						<td colspan="4">NÃ£o Existem Produtos Cadastrados!!</td>
-					</tr>
-					<tr th:each="produtos : ${produtos}">
-						<td><span th:text="${produtos.id}"> ID </span></td>
-						<td><span th:text="${produtos.nome}"> Nome </span></td>
-						<td><span th:text="${produtos.descricao}"> Descrição </span></td>
-						<td><span th:text="${produtos.quantidade}"> Quantidade
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${produtos.empty}">
+                        <td colspan="4">NÃ£o Existem Produtos Cadastrados!!</td>
+                    </tr>
+                    <tr th:each="produtos : ${produtos}">
+                        <td><span th:text="${produtos.id}"> ID </span></td>
+                        <td><span th:text="${produtos.nome}"> Nome </span></td>
+                        <td><span th:text="${produtos.descricao}"> Descrição </span></td>
+                        <td><span th:text="${produtos.quantidade}"> Quantidade
 						</span></td>
-						<td><span th:text="${produtos.dataCadastro}"> Data de
+                        <td><span th:text="${produtos.dataCadastro}"> Data de
 								Cadastro </span></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	 <script type="text/javascript" src="/js/materialize.min.js"></script>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/materialize.js"></script>
 </body>
 

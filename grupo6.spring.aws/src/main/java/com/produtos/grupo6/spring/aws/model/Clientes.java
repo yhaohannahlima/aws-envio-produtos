@@ -60,7 +60,10 @@ public class Clientes {
         this.dataNascimento = dataNascimento;
     }
 
-    
-
+    @Override
+    public String toString() {
+        return "Clientes [dataNascimento=" + dataNascimento + ", email=" + email + ", id=" + id + ", nome=" + nome
+                + "]";
+    }
     
 }

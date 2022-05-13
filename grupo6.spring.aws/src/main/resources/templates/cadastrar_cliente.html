@@ -1,51 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="/css/index.css"
-	media="screen,projection" />
-<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"
-	media="screen,projection" />
-<link type="text/css" rel="stylesheet" href="/css/materialize.css"
-	media="screen,projection" />
-<title>Cadastro de Clientes</title>
-</head>
-<body>
-	<div class="container">
-		<h3 class= "align-text">Cadastrar Clientes</h3>
-		
-			<nav class= "align-text">
-				<div class="nav-wrapper">
-				    <a href="/"><button  class="waves-effect waves-light btn-small">Inicio</button ></a> 
-					<a href="/clientes/cadastrar" ><button class="btn-flat disabled">Cadastrar de Clientes</button></a> 
-					<a href="/produtos/cadastrar" ><button	class="waves-effect waves-light btn-small">Cadastrar de Produtos</button></a> 
-					<a href="/vendas/cadastrar" ><button class="waves-effect waves-light btn-small" >Cadastrar Pedidos</button></a>
-				  
-			    </div>
-			</nav>
-			<form action="" >
-				<div class="mg-top">
-				<label for="nome">Nome do Cliente:</label>
-				<input type="text" id="nome" placeholder="Nome"/>
-				<label for="email">E-mail do Cliente:</label>
-				<input type="text"  id="email" placeholder="E-mail"/>
-				<label for="dataDeNascimento">Data de Nascimento:</label>
-				<input type="date"  id="dataDeNascimento" placeholder="Data de Nascimento"/>
-				
-				</div>
-			</form>
-			
-			<a  class="mg-top" href="/listar_clientes">
-		             <button class="btn waves-effect waves-light" type="submit" name="action">
+<<<<<<< HEAD <html>
+    =======
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    >>>>>>> 3143762b3b4699d830256baf4537e50a3c615ece
+
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="/css/index.css" media="screen,projection" />
+        <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
+        <link type="text/css" rel="stylesheet" href="/css/materialize.css" media="screen,projection" />
+
+        <title>Spring Boot File Upload to S3</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h3 class="align-text">Tela de Cadastro</h3>
+            <div>
+                <nav class="align-text">
+                    <div class="nav-wrapper">
+                        <a href="/"><button  class="waves-effect waves-light btn-small">Inicio</button ></a>
+                        <<<<<<< HEAD <a href="/cadastrar_cliente"><button class="waves-effect waves-light btn-small">Cadastrar de Clientes</button></a>
+                            =======
+                            <a href="/cadastrar_cliente"><button class="waves-effect waves-light btn-small" >Cadastrar de Clientes</button></a> >>>>>>> 3143762b3b4699d830256baf4537e50a3c615ece
+                            <a href="/produtos/cadastrar"><button	class="waves-effect waves-light btn-small">Cadastrar de Produtos</button></a>
+                            <a href="/vendas/cadastrar"><button class="waves-effect waves-light btn-small" >Criar Pedidos</button></a>
+
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/js/materialize.js"></script>
+    </body>
+
+    </html> <input type="text" th:field="*{email}" id="email" placeholder="E-mail" />
+    <label th:for="dataDeNascimento">Data de Nascimento:</label>
+    <input type="date" th:field="*{dataNascimento}" id="dataDeNascimento" placeholder="Data de Nascimento" />
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" value="salvar_cliente">
+					Salvar Cliente	   		
+		 		</button>
+    </form>
+    >>>>>>> 3143762b3b4699d830256baf4537e50a3c615ece
+
+    <a class="mg-top" href="/listar_clientes">
+        <button class="btn waves-effect waves-light" type="submit" name="action">
 		             			Listar Clientes
 		   			 <i class="material-icons right">send</i>
 	             	 </button>
-				</a>
-	</div>
+    </a>
+    </div>
 
-	<script type="text/javascript" src="/js/materialize.min.js"></script>
-	<script type="text/javascript" src="/js/materialize.js"></script>
-</body>
-</html>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/materialize.js"></script>
+    </body>
+
+    </html>
