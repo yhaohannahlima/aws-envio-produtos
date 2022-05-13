@@ -1,15 +1,16 @@
 package com.produtos.grupo6.spring.aws.controller;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.net.URI;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.produtos.grupo6.spring.aws.DAO.ClientesDAO;
 import com.produtos.grupo6.spring.aws.DAO.PedidosDAO;
 import com.produtos.grupo6.spring.aws.DAO.ProdutosDAO;
 import com.produtos.grupo6.spring.aws.model.Clientes;
 import com.produtos.grupo6.spring.aws.model.Pedidos;
 import com.produtos.grupo6.spring.aws.model.Produtos;
+import com.produtos.grupo6.spring.aws.service.RedisService;
 import com.produtos.grupo6.spring.aws.util.KafkaUtil;
 import com.produtos.grupo6.spring.aws.util.S3Util;
 
@@ -114,8 +115,27 @@ public class MainController {
 
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Clientes cliente ,RedirectAttributes attr){
-    	System.out.println(cliente);
-    	       clientesDAO.save(cliente);  
+    	RedisService jedis = new RedisService();
+
+        Gson gson = new Gson();
+        try {
+            Clientes  resp = clientesDAO.save(cliente);
+            String json = gson.toJson(cliente); 
+            String idCliente = "Cliente_" + Integer.toString(resp.getId());
+            System.out.println(idCliente);
+            jedis.write(idCliente, json, 1000);            
+            System.out.println("Dado salvo no redis: " + jedis.read(idCliente));
+
+            
+        } catch (Exception e) {
+            attr.addFlashAttribute("Error","Não foi possível salvar o Cliente!");
+            e.getStackTrace();
+            return "salvar";   
+        }
+        finally{
+            jedis.close();
+        }
+
         attr.addFlashAttribute("Sucess","Cliente salvo com sucesso.");      
         return "cadastro";
     }
