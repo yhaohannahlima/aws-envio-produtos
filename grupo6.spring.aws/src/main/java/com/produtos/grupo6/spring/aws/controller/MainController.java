@@ -1,5 +1,6 @@
 package com.produtos.grupo6.spring.aws.controller;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -11,9 +12,11 @@ import com.produtos.grupo6.spring.aws.model.Clientes;
 import com.produtos.grupo6.spring.aws.model.Pedidos;
 import com.produtos.grupo6.spring.aws.model.Produtos;
 import com.produtos.grupo6.spring.aws.service.RedisService;
+import com.produtos.grupo6.spring.aws.service.RestElasticService;
 import com.produtos.grupo6.spring.aws.util.KafkaUtil;
 import com.produtos.grupo6.spring.aws.util.S3Util;
 
+import org.apache.http.client.ClientProtocolException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -84,27 +87,30 @@ public class MainController {
 	   return "cadastrar_cliente";
    }
 
-   
+     
     @GetMapping("/produtos")
     public String buscarDadosProdutos(ModelMap model) {
         List<Produtos> produtos = (List<Produtos>) produtosDAO.findAll();
+        
+        for(Produtos p : produtos) {
+        	try {
+				System.out.println(RestElasticService.postProduto(p, p.getId()));
+			} catch(ClientProtocolException e) {
+				e.printStackTrace();
+        	} catch (IOException e) {				
+				e.printStackTrace();
+			}
+        }
         model.addAttribute("produtos", produtos);
-        return "produtos";
+        return "/produtos";
     }
 
     @GetMapping("/listar_clientes")
-    public String buscarDadosClientes(ModelMap model){ 
-    	
-    		
-    		List<Clientes> clientes = (List<Clientes>)clientesDAO.findAll();   
-    		
+    public String buscarDadosClientes(ModelMap model){    	  		
+    		List<Clientes> clientes = (List<Clientes>)clientesDAO.findAll();    		
     		model.addAttribute("clientes",clientes);    	
-    	
-    	for( Clientes c : clientes) {    		
-    		System.out.println(c.toString());
-    	}    
     	return "listar_clientes";    	
-    }
+    }    
 
     @GetMapping("/pedidos")
     public String buscarDadosPedidos(ModelMap model) {

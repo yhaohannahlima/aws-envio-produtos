@@ -25,7 +25,13 @@ public class Pedidos {
 
     @Column(name = "data_pedido", nullable = false)
     private Date dataPedido;
+    
+    @Column(name="status")
+    private String status;
+    
+    
 
+	
 	public Integer getId() {
 		return id;
 	}
@@ -57,13 +63,23 @@ public class Pedidos {
 	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
-		return "Pedidos [clienteId = " + clienteId + ", dataPedido = " + dataPedido + ", id = " + id + ", quantidadeTotal = "
-				+ quantidadeTotal + "]";
+		return "Pedidos [id=" + id + ", clienteId=" + clienteId + ", quantidadeTotal=" + quantidadeTotal
+				+ ", dataPedido=" + dataPedido + ", status=" + status + "]";
 	}
+	
 
+	
 	
 
 }
