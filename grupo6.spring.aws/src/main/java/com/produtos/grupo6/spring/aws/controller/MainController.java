@@ -90,11 +90,11 @@ public class MainController {
      
     @GetMapping("/produtos")
     public String buscarDadosProdutos(ModelMap model) {
-        List<Produtos> produtos = (List<Produtos>) produtosDAO.findAll();
+        List<Produtos> produtos = (List<Produtos>) produtosDAO.findAll(); //no postgres sql
         
         for(Produtos p : produtos) {
         	try {
-				System.out.println(RestElasticService.post(p));
+				System.out.println(RestElasticService.post(p)); // cadastro no elasticSearch - novo 201, se já existe 200
 			} catch(ClientProtocolException e) {
 				e.printStackTrace();
 			} catch (NoSuchFieldException e) {				
