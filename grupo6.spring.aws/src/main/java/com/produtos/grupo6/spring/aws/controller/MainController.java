@@ -94,12 +94,21 @@ public class MainController {
         
         for(Produtos p : produtos) {
         	try {
-				System.out.println(RestElasticService.postProduto(p, p.getId()));
+				System.out.println(RestElasticService.post(p));
 			} catch(ClientProtocolException e) {
 				e.printStackTrace();
-        	} catch (IOException e) {				
+			} catch (NoSuchFieldException e) {				
+				e.printStackTrace();
+			} catch (SecurityException e) {				
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {				
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {				
+				e.printStackTrace();
+			} catch (IOException e) {				
 				e.printStackTrace();
 			}
+        	
         }
         model.addAttribute("produtos", produtos);
         return "/produtos";
